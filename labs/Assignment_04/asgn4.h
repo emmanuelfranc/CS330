@@ -49,16 +49,28 @@ void selectionSort(int *arr, int size)
         }
     }
 }
-
+/* Function printGivenArray prints the elements of an array 
+ * Inputs:
+ * - arr: A pointer to the first element in the array to be printed
+ * - n: the number of elements in the array
+ * Ooutputs: The function prints the array elements to the standard output
+*/
 void PrintGivenArray(int *arr, int n){
     printf("\nGiven array is: [");
     for (int i = 0; i < n - 1; i++)
     {
         printf("%d, ", *(arr + i));
     }
-    printf("%d]\n", *(arr + n - 1));
+    printf("%d]\n", *(arr + n - 1));//Print the last element in the array and close the bracket
 }
 
+/* Function printArray prints the elements of a sorted array along with the sorting algorithm used
+ * Inputs:
+ * - arr: A poinnter to the first element of the array to be printed
+ * - n: the number of elements in the array
+ * - type: A stirng describing the type of sorting that was applied to the array - insertion or selection
+ * Ouputss: the function prints the sorted array elements and the sorting type to the standard output.
+*/
 void printArray(int *arr, int n, char *type)
 {
     printf("Sorted Array - %s: [", type);
@@ -66,7 +78,7 @@ void printArray(int *arr, int n, char *type)
     {
         printf("%d, ", *(arr + i));
     }
-    printf("%d]\n", *(arr + n - 1));
+    printf("%d]\n", *(arr + n - 1));//print the last element and close the bracket
 }
 
 #endif
