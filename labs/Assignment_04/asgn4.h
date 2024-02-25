@@ -26,17 +26,36 @@ void selectionSort(int *arr, int size)
         int minValueIndex = i;
         for (int j = i + 1; j < n; j++)
         {
-            if(*(arr + j) < *(arr + minValueIndex)){
+            if (*(arr + j) < *(arr + minValueIndex))
+            {
                 minValueIndex = j;
             }
         }
-        if(minValueIndex != i){
+        if (minValueIndex != i)
+        {
             int temp = *(arr + i);
             *(arr + i) = *(arr + minValueIndex);
             *(arr + minValueIndex) = temp;
         }
     }
 }
+void PrintGivenArray(int *arr, int n){
+    printf("\nGiven array is: [");
+    for (int i = 0; i < n - 1; i++)
+    {
+        printf("%d, ", *(arr + i));
+    }
+    printf("%d]\n", *(arr + n - 1));
+}
 
+void printArray(int *arr, int n, char *type)
+{
+    printf("Sorted Array - %s: [", type);
+    for (int i = 0; i < n - 1; i++)
+    {
+        printf("%d, ", *(arr + i));
+    }
+    printf("%d]\n", *(arr + n - 1));
+}
 
 #endif

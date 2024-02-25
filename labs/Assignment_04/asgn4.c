@@ -1,14 +1,33 @@
 #include <stdio.h>
 #include "asgn4.h"
 
-int main(){
-    int arr[] = {1,42,4,13,1,34,12,0,19};
+int main()
+{
+    int n;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
 
-    selectionSort(arr, 9);
-    for (int i = 0; i < 9; i++)
+    int arr[n];
+    printf("\nPlease enter %d integers\n", n);
+    for (int i = 0; i < n; i++)
     {
-        printf("%d\n", arr[i]);
+        printf("Enter element %d of the array: ", i+1);
+        scanf("%d", (arr + i));
     }
-    
-     FILE *fout = fopen("input.txt", "r");
+    // Copying the Original array to a new array for Insertion Sort
+    int arrCopy[n];
+    for (int i = 0; i < n; i++)
+    {
+        *(arrCopy + i) = *(arr + i);
+    }
+
+    int size = sizeof(arr) / sizeof(*arr);
+
+    PrintGivenArray(arr, size);
+
+    selectionSort(arr, size);
+    printArray(arr, size, "Selection Sort");
+
+    insertionSort(arrCopy, size);
+    printArray(arrCopy, size, "Insertion Sort");
 }
