@@ -4,7 +4,7 @@
 int main()
 {
     int n;
-    printf("Enter the number of elements in the array: ");
+    printf("Enter the number of array elements to be sorted: ");
     scanf("%d", &n);
 
     int arr[n];
