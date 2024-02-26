@@ -3,11 +3,11 @@
 
 #include <stdio.h>
 
-/*Function insertionSort sorts an array of integers using the insertion sort algorithm.
- *Inputs:
- *  - arr: A pointer to the first element of the array to be sorted
- *  - size: The number of elements in the array.
- *Outputs: The function sorts the array in place; therefore, the output is the sorted array itself. 
+/* Function insertionSort sorts an array of integers using the insertion sort algorithm.
+ * Inputs:
+ * - arr: A pointer to the first element of the array to be sorted
+ * - size: The number of elements in the array.
+ * Outputs: The function sorts the array in place; therefore, the output is the sorted array itself. 
 */
 void insertionSort(int *arr, int size)
 {
