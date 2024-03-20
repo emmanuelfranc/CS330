@@ -39,23 +39,23 @@ main:														# Start of the main function
 	movl	$10, -12(%rbp)									# Stores the value 10 in a memory location on the stack
 	movl	$7, -8(%rbp)									# Stores the value 7 in a memory location on the stack
 	movl	$0, -4(%rbp)									# Initializes a variable to 0 on the stack
-	movl	-8(%rbp), %edx
-	movl	-12(%rbp), %eax
-	movl	%edx, %esi
-	movl	%eax, %edi
-	call	myAddTwoNumbersFunction
-	movl	%eax, -4(%rbp)
-	movl	-4(%rbp), %eax
-	movl	%eax, %esi
-	leaq	.LC0(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	movl	$0, %eax
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE1:
-	.size	main, .-main
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits
+	movl	-8(%rbp), %edx									# Moves the second argument from the stack to register %edx
+	movl	-12(%rbp), %eax									# Moves the first argument to register %edi
+	movl	%edx, %esi										# Moves the second argument to register %esi
+	movl	%eax, %edi										# Moves the first argument to register %edi
+	call	myAddTwoNumbersFunction							# Calls the function myAddTwoNumbersFunction
+	movl	%eax, -4(%rbp)									# Stores the return value from myAddTwoNumbersFunction on the stack
+	movl	-4(%rbp), %eax									# Moves the return value to register %eax
+	movl	%eax, %esi										# Moves the return value to register %esi
+	leaq	.LC0(%rip), %rdi								# Loads the address of the string into register %rdi
+	movl	$0, %eax										# Clears register %eax
+	call	printf@PLT										# Calls the printf function to print the string
+	movl	$0, %eax										# Sets return value to 0
+	leave													# Restores the stack frame and base pointer
+	.cfi_def_cfa 7, 8										# Defines the current frame pointer and return address
+	ret														# Exits the function, returning control to the caller
+	.cfi_endproc											# signals the end of the procedure
+.LFE1:														# Indicates the end of the function's lcoal block
+	.size	main, .-main									# Specifies the size of the main function
+	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"		# Provies information about the compiler
+	.section	.note.GNU-stack,"",@progbits				# Defines stack related information
