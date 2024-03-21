@@ -4,19 +4,19 @@
 	.type	myAddTwoNumbersFunction, @function				# Declares myAddTwoNumbersFunction as a function type
 myAddTwoNumbersFunction:									# Label marking the start of myAddTwoNumbersFunction
 .LFB0:														# Indicates the begining of the function's local block
-	.cfi_startproc											# Signals the start of the procedure			
+	.cfi_startproc											
 	pushq	%rbp											# Pushes the base pointer on ot the stack
 	.cfi_def_cfa_offset 16									# Adjusts the stack pointer
-	.cfi_offset 6, -16										# Defines the offset for %rbp in the Call Frame Information
+	.cfi_offset 6, -16										
 	movq	%rsp, %rbp										# Sets the base pointer to the current stack pointer
-	.cfi_def_cfa_register 6									# Defines %rbp as the current frame pointer
+	.cfi_def_cfa_register 6									
 	movl	%edi, -4(%rbp)									# Moves the first argument (in %edi) to a memory location on the stack
 	movl	%esi, -8(%rbp)									# Moves the second argument (in %esi) to a memory location on the stack
 	movl	-4(%rbp), %edx									# Moves the first argument from the stack to the refister %edx
 	movl	-8(%rbp), %eax									# Moves the second argument frmo the stack to register %eax
 	addl	%edx, %eax										# Adds the value of %edx and %eax and stores the result in %eax
 	popq	%rbp											# Restores the base pointer from the stack
-	.cfi_def_cfa 7, 8										# Defines current frame pointer and return addresses
+	.cfi_def_cfa 7, 8										
 	ret														# Returns from the function
 	.cfi_endproc											# signals the end of the procedure
 .LFE0:														# Indicates the end of the function's local block
@@ -29,12 +29,12 @@ myAddTwoNumbersFunction:									# Label marking the start of myAddTwoNumbersFun
 	.type	main, @function									# Defines main as a function type
 main:														# Start of the main function
 .LFB1:														# Begining of the function's local block
-	.cfi_startproc											# Start of a procedure
+	.cfi_startproc											
 	pushq	%rbp											# Push the base pointer to the stack
 	.cfi_def_cfa_offset 16									# Adjusts the stack pointer
-	.cfi_offset 6, -16										# Defines the offset for %rbp in the Call Frame Information
+	.cfi_offset 6, -16										
 	movq	%rsp, %rbp										# Sets the base pointer to the current stack pointer
-	.cfi_def_cfa_register 6									# Defines %rbp as the current frame pointer
+	.cfi_def_cfa_register 6									
 	subq	$16, %rsp										# Allocates space on the stack for local variables
 	movl	$10, -12(%rbp)									# Stores the value 10 in a memory location on the stack
 	movl	$7, -8(%rbp)									# Stores the value 7 in a memory location on the stack
@@ -52,7 +52,7 @@ main:														# Start of the main function
 	call	printf@PLT										# Calls the printf function to print the string
 	movl	$0, %eax										# Sets return value to 0
 	leave													# Restores the stack frame and base pointer
-	.cfi_def_cfa 7, 8										# Defines the current frame pointer and return address
+	.cfi_def_cfa 7, 8										
 	ret														# Exits the function, returning control to the caller
 	.cfi_endproc											# signals the end of the procedure
 .LFE1:														# Indicates the end of the function's lcoal block
